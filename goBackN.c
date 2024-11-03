@@ -5,23 +5,18 @@ int main() {
     printf("Enter window size : ");
     scanf("%d", &window);
 
-    int sent = 0, ack = 0, i = 0;
+    int sent = 0, ack = 0;
 
-    while (1) {
-        for (i = 0; i < window; i++) {
+    while (ack < window) {
+        for (int i = 0; i < window && sent < window; i++) {
             printf("Frame transmitted: %d\n", sent);
             sent++;
-            if (sent == window) {
-                break;
-            }
         }
 
         printf("Enter last received acknowledgment: ");
         scanf("%d", &ack);
 
-        if (ack == window) {
-            break;
-        } else {
+        if (ack < window) {
             sent = ack;
         }
     }
